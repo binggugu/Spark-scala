@@ -2,12 +2,13 @@ package com.haiteam
 
 import org.apache.spark.sql.SparkSession
 
-object Example_04 {
+object Example_05 {
     def main(args: Array[String]): Unit = {
 
       var spark = SparkSession.builder().appName("hkproject").
         config("spark.master", "local").
         getOrCreate()
+
 
       var priceData = Array(1000d,1200d,1300d,1500d,10000d)
       var promitionRate = 0.2
@@ -23,6 +24,8 @@ object Example_04 {
         i = i+1
       }
 
+      var a = 10
+      var b = 5
 
 
 
