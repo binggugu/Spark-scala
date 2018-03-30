@@ -1,3 +1,5 @@
+package com.haiteam
+
 import org.apache.spark.sql.SparkSession
 
 object Example_03 {
