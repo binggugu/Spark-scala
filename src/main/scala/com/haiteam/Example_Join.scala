@@ -56,7 +56,14 @@ object Example_Join {
 
     spark.sql("select a.regionid, b.regionname, a.product, a.yearweek, a.qty " +
       "from selloutTable a " +
-      "inner join selloutTable1 b " +
+      "inner join selloutTable1 b " + //inner join 은 붙긴 붙는데
+      // b 데이터에 없는 정보가 있으면 그부분을 제외하고 나타냄
+      "on a.regionid = b.regionid"
+    )
+
+    spark.sql("select a.regionid, b.regionname, a.product, a.yearweek, a.qty " +
+      "from selloutTable a " +
+      "left join selloutTable1 b " + // left 조인은 a에 있는 데이터는 유지하지만, b 에 있는 데이터는 나오지 않음.
       "on a.regionid = b.regionid"
     )
 
