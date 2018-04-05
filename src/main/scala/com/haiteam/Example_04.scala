@@ -24,10 +24,6 @@ object Example_04 {
         i = i+1
       }
 
-      var a = 10
-      var b = 5
-
-
 
     }
 }
