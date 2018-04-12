@@ -67,5 +67,20 @@ object Example_Join {
       "on a.regionid = b.regionid"
     )
 
+    val prop = new java.util.Properties
+    prop.setProperty("driver", "oracle.jdbc.OracleDriver")
+    prop.setProperty("user", "haiteam")
+    prop.setProperty("password", "haiteam")
+    val table = "hk_join"
+    //append
+//    resultDf.write.mode("overwrite").jdbc(myUrl, table, prop)
+
+    // Dataframe.toDf.....
+    ///////////// Oracle Express Usage ////////////////
+//    alter system set processes=500 scope=spfile
+//    show parameter processes
+//    shutdown immediate
+//    startup
+
   }
 }
