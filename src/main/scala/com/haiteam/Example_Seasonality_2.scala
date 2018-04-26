@@ -9,8 +9,7 @@ object Example_Seasonality_2 {
       getOrCreate()
 
     var staticUrl = "jdbc:oracle:thin:@192.168.110.111:1521/orcl"
-
-    var staticUser = "kpo"
+    var staticUser = "kopo"
     var staticPw = "kopo"
     var selloutDb = "kopo_channel_seasonality_new"
     var productNameDb = "kopo_product_mst"
@@ -69,7 +68,7 @@ object Example_Seasonality_2 {
       var checkValid = false
       if( (x.getString(accountidNo) == "A60") &&
         (x.getString(productNo) == "PRODUCT34") &&
-        (x.getString(yearweekNo) == "201553") ){
+        (x.getString(yearweekNo) == "201402") ){
         checkValid = true
       }
       checkValid
