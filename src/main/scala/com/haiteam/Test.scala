@@ -23,12 +23,12 @@ object Test {
     selloutDf.show(2)
 
     ///////////////////////////////////////// 2번답
-    var rawData = spark.sql ("select "+
-      "regionid, "+
-      "product, "+
-      "yearweek, "+
-      "cast(qty as double), "+
-      "cast(qty * 1.2 as double)as qty_new "+
+    var rawData = spark.sql("select " +
+      "regionid, " +
+      "product, " +
+      "yearweek, " +
+      "cast(qty as double), " +
+      "cast(qty * 1.2 as double)as qty_new " +
       "from selloutTable")
 
     //////////////////////////////////////// 4번답
@@ -41,34 +41,34 @@ object Test {
 
     var rawRdd = rawData.rdd
 
-    var filteredRdd = rawRdd.filter(x=>{
+    var filteredRdd = rawRdd.filter(x => {
       var checkValid = false
-      var yearValue = x.getString(yearweekNo).substring(0,4).toInt
+      var yearValue = x.getString(yearweekNo).substring(0, 4).toInt
 
-      if( yearValue >= 2016 ){
+      if (yearValue >= 2016) {
         checkValid = true
       }
       checkValid
     })
 
-    var filteredRdd2 = filteredRdd.filter(x=> {
+    var filteredRdd2 = filteredRdd.filter(x => {
       var checkValid = true
-      var weekValue = x.getString(yearweekNo).substring(4,6).toInt //substring 4이상은 전부다 포함
+      var weekValue = x.getString(yearweekNo).substring(4, 6).toInt //substring 4이상은 전부다 포함
 
-      if (weekValue == 52){
+      if (weekValue == 52) {
         checkValid = false
       }
       checkValid
     })
 
-    var productArray = Array("PRODUCT1","PRODUCT2")
+    var productArray = Array("PRODUCT1", "PRODUCT2")
     var productSet = productArray.toSet
 
-    var resultRdd = filteredRdd2.filter(x=>{
+    var resultRdd = filteredRdd2.filter(x => {
       var checkValid = false
       var productInfo = x.getString(productNo)
-      if ( (productInfo == "PRODUCT1") ||
-        (productInfo == "PRODUCT2")){
+      if ((productInfo == "PRODUCT1") ||
+        (productInfo == "PRODUCT2")) {
         checkValid = true
       }
       checkValid
@@ -97,4 +97,5 @@ object Test {
     //append
     finalResultDf.write.mode("overwrite").jdbc(staticUrl1, table, prop)
 
+  }
 }
