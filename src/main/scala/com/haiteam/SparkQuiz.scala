@@ -169,7 +169,7 @@ object SparkQuiz {
         // 결과 출력 // 156건
         var mapResult = data.map(x=>{
 
-          ratio = x.getDouble(qty)/average // 평균 (2000)
+          ratio = x.getDouble(qtyNo)/average // 평균 (2000)
           (key,
             size,
             average,
